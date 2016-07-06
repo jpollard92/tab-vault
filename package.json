@@ -1,0 +1,13 @@
+{
+  "name"          : "tab-vault",
+  "version"       : "0.0.1",
+  "description"   : "Fancy UG bookmarker",
+  "main"          : "server.js",
+  "author"        : "James Pollard",
+  "dependencies"  : {
+    "express"     : "latest",
+    "request"     : "latest",
+    "cheerio"     : "latest",
+	"body-parser" : "latest"
+  }
+}
