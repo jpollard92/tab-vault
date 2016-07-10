@@ -13,7 +13,6 @@ function getUserInput(song, band) {
 }
 
 function sendRequest(input, contentType) {	
-	// alert(input);
 	$.ajax({
 		type: "POST",
 		contentType: contentType,
@@ -22,10 +21,8 @@ function sendRequest(input, contentType) {
 		data: input,
 		timeout: 3000,
 		success: function(response) {
-			//alert(response);
 			if (response.constructor === Array) {
 				var html = convertArrayToUl(response);
-				//alert(html);
 				$('.output').append(html);
 			}
 		},
