@@ -19,7 +19,7 @@ function sendRequest(input, contentType) {
 		async: "true",
 		url: "/scrape",
 		data: input,
-		timeout: 3000,
+		timeout: 30000,
 		success: function(response) {
 			if (response.constructor === Array) {
 				var html = convertArrayToUl(response);
