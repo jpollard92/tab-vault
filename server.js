@@ -9,7 +9,8 @@ var http	   = require('http');
 	app		   = express(),
 	bodyParser = require('body-parser');
 // local modules
-	crawler = require(approot + 'crawler');
+	crawler    = require(approot + 'crawler');
+	formatter  = require(approot + 'formatter');
 // configuration
 app.use(bodyParser.json({ strict: false })) // parse application/json
 app.use(express.static(__dirname + '/pub'));
