@@ -1,15 +1,8 @@
 function initiate () {
-	var song = document.getElementById('songinput').value;
-	var band = document.getElementById('bandinput').value;
-	
-	if (song != '' || band !== '') {
-		sendRequest(getUserInput(song, band), 'application/json; charset=UTF-8');
+	var input = document.getElementById('userinput').value;
+	if (input.trim() !== '') {
+		sendRequest(input, 'text/plain');
 	}
-	return false;
-}
-
-function getUserInput(song, band) {
-	return JSON.stringify({"song": song, "band": band});
 }
 
 function sendRequest(input, contentType) {	
@@ -36,6 +29,7 @@ function convertArrayToUl(arr) {
 	var replaceUrl = 'https://tabs.ultimate-guitar.com/';
 	var html = '<ul>';
 	arr.forEach(function(url) {
+		url = url[0];//temporary
 		if(url.substring(0, replaceUrl.length) == replaceUrl) {
 			html += '<li><a href="' + url + '">' 
 				+ url.replace(replaceUrl, '') + '</li>';

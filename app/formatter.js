@@ -6,16 +6,18 @@
 *	[2] => Artist
 *	[3] => Version
 *	[4] => Type (tab, gp5, etc)
+*	[5] => Rating
+*	[6] => Votes
 */
-var formatResult = function(data) {
-	// console.log(data);
-	var artist = data.split('/')[4];
-	var song = isNaN(artist) ? data.split('/')[5] : artist;
+module.exports.formatResult = function(result) {
+	var url = result[0];
+	var rating = result[1];
+	var artist = url.split('/')[4];
+	var song = isNaN(artist) ? url.split('/')[5] : artist;
 	var type = getTabType(song);
 	var version = getVersion(song);
 	song = stripSongName(song, type, version);
-	console.log([data, song, artist, version, type]);
-	return [data, song, artist, version, type];
+	return [url, song, artist, version, type, rating[0], rating[1]];
 }
 
 function stripSongName(song, type, version) {
@@ -49,5 +51,3 @@ function matchType(tab, type) {
 	return type === tab.substr(tab.length - type.length, type.length) 
 		|| type === tab.substr(tab.length - type.length - 4, type.length);
 }
-
-module.exports.formatResult = formatResult;

@@ -31,17 +31,6 @@ body .footer {
 	text-align: center;
 }
 
-div #song {
-	float: left;
-	height: 100%;
-	width: 50%;
-}
-
-div #band {
-	float: left;
-	height: 100%;
-	width: 50%;
-}
 
 div .input {
 	overflow: hidden;
