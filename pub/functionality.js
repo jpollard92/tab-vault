@@ -1,8 +1,9 @@
-function initiate () {
+function initiate() {
 	var input = document.getElementById('userinput').value;
 	if (input.trim() !== '') {
 		sendRequest(input, 'text/plain');
 	}
+	return false;
 }
 
 function sendRequest(input, contentType) {	

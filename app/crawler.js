@@ -1,17 +1,16 @@
-module.exports.crawl = function(query, res) {
+module.exports.crawl = function (query, res) {
 	if (typeof query === 'string' && query !== '') {
 		sendUGRequest(query, 1, [], res);
 	}
 }
 
 function sendUGRequest(query, page, data, res) {
-	request(getSearchUrl(query, page), function(error, response, body) {
+	request(getSearchUrl(query, page), function (error, response, body) {
 		if (!error) {
 			var $ = cheerio.load(body);
 			data = data.concat(scraper.scrape($));
 			if (scraper.isFinalPage($, page) === false) {
-				page++;
-				sendUGRequest(query, page, data, res);
+				sendUGRequest(query, page + 1, data, res);
 			} else {
 				res.send(data.map(formatter.formatResult));
 			}

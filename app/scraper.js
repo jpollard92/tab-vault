@@ -2,23 +2,20 @@
 *	[0] => URL, 
 *	[1] => [Rating, Votes]]
 */
-module.exports.scrape = function ($) {
-	return $('.tresults tr').filter(function() {
-		return isWanted(getUrl($(this)));
+module.exports.scrape = function ($) {	
+	return $('.song.result-link').filter(function () {
+		return isWanted($(this).attr('href'));
 	})
-	.map(function() {
-		return [[getUrl($(this)), getRating($(this))]];
+	.map(function () {
+		return [[$(this).attr('href'), getRating($(this).closest('tr'))]];
 	})
 	.toArray();
 }
 
 module.exports.isFinalPage = function ($, page) {
-	return $('.paging').children().last().is('#active_p') || page >= 10 || !page;
+	return page >= $('.paging a').length || page >= 10 || !page;
 }
 
-function getUrl(tr) {
-	return tr.find('.song.result-link').attr('href');
-}
 /*
 *	[0] => Rating
 *	[1] => Votes

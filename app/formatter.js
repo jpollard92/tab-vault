@@ -9,7 +9,7 @@
 *	[5] => Rating
 *	[6] => Votes
 */
-module.exports.formatResult = function(result) {
+module.exports.formatResult = function (result) {
 	var url = result[0];
 	var rating = result[1];
 	var artist = url.split('/')[4];
