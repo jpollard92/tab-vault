@@ -6,7 +6,7 @@ function initiate() {
 	return false;
 }
 
-function sendRequest(input, contentType) {	
+function sendRequest(input, contentType) {
 	$.ajax({
 		type: "POST",
 		contentType: contentType,
@@ -28,13 +28,11 @@ function sendRequest(input, contentType) {
 
 function convertArrayToUl(arr) {
 	var replaceUrl = 'https://tabs.ultimate-guitar.com/';
-	var html = '<ul>';
-	arr.forEach(function(url) {
-		url = url[0];//temporary
-		if(url.substring(0, replaceUrl.length) == replaceUrl) {
-			html += '<li><a href="' + url + '">' 
-				+ url.replace(replaceUrl, '') + '</li>';
-		}
-	});
-	return html + '</ul>';
+	var list = arr.reduce(function (result, tab) {
+		var url = tab.url;
+		return result + '<li>'
+		+ '<a href="' + url + '">' + url.replace(replaceUrl, '') + '</li>';
+	}, '');
+
+	return '<ul>' + list + '</ul>';
 }

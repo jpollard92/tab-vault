@@ -1,8 +1,8 @@
-/* 
-*	[0] => URL, 
-*	[1] => [Rating, Votes]]
+/*
+*	[0] => URL,
+*	[1] => [Rating, Votes]
 */
-module.exports.scrape = function ($) {	
+module.exports.scrape = function ($) {
 	return $('.song.result-link').filter(function () {
 		return isWanted($(this).attr('href'));
 	})
@@ -22,12 +22,11 @@ module.exports.isFinalPage = function ($, page) {
 */
 function getRating(tr) {
 	var span = tr.find('.rating');
-	
 	if (span && span.length !== 0) {
 		var rating = span.find('.icon-rating-sm__active').length
 			+ 0.5 * span.find('.icon-rating-sm__half').length;
+
 		var votes = parseInt(tr.find('.ratdig').html());
-		
 		return [rating, votes];
 	}
 	return [0, 0];
